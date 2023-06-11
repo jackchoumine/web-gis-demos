@@ -8,11 +8,13 @@ on:
       - src/*
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Run a one-line script
+  build: # job id 
+    runs-on: ubuntu-latest # 指定 actions 执行系统，有 8 种可以选择
+    steps: # job 执行步骤
+      # 使用现成的 actions  
+      - uses: actions/checkout@v1 # github 的 actions  拉取代码
+      - name: first step # 给这个步骤取一个名字
+        # 不取名字 - run echo Hello,World!
         run: echo Hello,world!
       - name: 测试一个脚本
         run: |

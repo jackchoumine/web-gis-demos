@@ -1,4 +1,4 @@
-name: CI
+name: '持续集成'
 
 on: 
  push:

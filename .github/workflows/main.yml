@@ -22,7 +22,11 @@ jobs:
         run: |
           echo Add other actions to build.
           echo test, and deploy your project.
-      # - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
+      - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:

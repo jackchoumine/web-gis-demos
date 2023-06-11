@@ -1,20 +1,20 @@
 name: '持续集成'
 
-on: 
- push:
-  branches:
-   - master
-  paths: # 指定目录有变化时触发 actions
-   - src/* 
+on:
+  push:
+    branches: # branches: ["master","dev"] 指定多个分支
+      - master
+    paths: # 指定目录有变化时触发 actions
+      - src/*
 
 jobs:
- build:
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@v1
-   - name: Run a one-line script
-     run: echo Hello,world!
-   - name: 测试一个脚本
-     run: |
-        echo Add other actions to build.
-        echo test, and deploy your project.
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run a one-line script
+        run: echo Hello,world!
+      - name: 测试一个脚本
+        run: |
+          echo Add other actions to build.
+          echo test, and deploy your project.

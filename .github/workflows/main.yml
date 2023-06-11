@@ -4,6 +4,8 @@ on:
  push:
   branches:
    - master
+  paths: # 指定目录有变化时触发 actions
+   - src/* 
 
 jobs:
  build:

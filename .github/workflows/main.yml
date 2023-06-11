@@ -20,7 +20,7 @@ jobs:
         run: |
           echo Add other actions to build.
           echo test, and deploy your project.
-      - uses: actions/setup-node@v1 # 设置node环境
+      - uses: actions/setup-node # 设置node环境
       - run: |
           npm i
           npm run deploy

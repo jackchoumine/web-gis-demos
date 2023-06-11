@@ -1,0 +1,70 @@
+# 当 push 到 master 分支时，触发工作流
+on:
+  push:
+    branches:
+      - master
+# 下边是新增配置
+jobs:
+  job:
+    name: Deployment
+    runs-on: macos-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # 下边是新增配置
+    steps:
+      # 拉取最最新的代码 github 编写的 action
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 设置 node 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # 设置 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      # 下边是新增配置
+      # cache
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      # cache fail and install dependencies
+      - name: Install dependencies
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: |
+          pnpm install
+      # 下边是新增配置
+      - name: Build
+        run: pnpm run build
+
+      - name: upload production artifacts
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist
+
+      # deploy
+      - name: Deploy Page To Release
+        id: deployment
+        uses: actions/deploy-pages@v1

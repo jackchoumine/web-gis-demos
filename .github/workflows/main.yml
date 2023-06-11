@@ -22,5 +22,8 @@ jobs:
           echo test, and deploy your project.
       - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
       - run: |
+          git config --global user.email "jackchou4job@163.com"
+          git config --global user.name "JackChou"
+      - run: |
           npm i
           npm run deploy

@@ -6,6 +6,8 @@ on:
       - master
     # paths: # 指定目录有变化时触发 actions
     #   - src/*
+permissions:
+  contents: write
 
 jobs:
   build: # job id
@@ -20,7 +22,13 @@ jobs:
         run: |
           echo Add other actions to build.
           echo test, and deploy your project.
-      - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
+      # - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.2
+        with:
+          folder: dist # The folder the action should deploy.
+
+
       # - run: |
       #     git config --global user.email "jackchou4job@163.com"
       #     git config --global user.name "JackChou"

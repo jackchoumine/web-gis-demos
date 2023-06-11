@@ -1,8 +1,11 @@
 # 当 push 到 master 分支时，触发工作流
+name: 'CI'
+
 on:
   push:
     branches:
       - master
+
 # 下边是新增配置
 jobs:
   job:

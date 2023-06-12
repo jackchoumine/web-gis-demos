@@ -4,8 +4,8 @@ on:
   push:
     branches: # branches: ["master","dev"] 指定多个分支
       - master
-    # paths: # 指定目录有变化时触发 actions
-    #   - src/*
+    paths: # 指定目录有变化时触发 actions
+      - src/*
 permissions:
   contents: write
 
@@ -31,11 +31,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
           folder: dist # The folder the action should deploy.
-
-
-      # - run: |
-      #     git config --global user.email "jackchou4job@163.com"
-      #     git config --global user.name "JackChou"
-      # - run: |
-      #     npm i
-      #     npm run deploy

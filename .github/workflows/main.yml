@@ -4,8 +4,8 @@ on:
   push:
     branches: # branches: ["master","dev"] 指定多个分支
       - master
-    # paths: # 指定目录有变化时触发 actions
-    #   - src/*
+    paths: # 指定目录有变化时触发 actions
+      - src/*
 permissions:
   contents: write
 

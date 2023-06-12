@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-11 23:54:36
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-13 00:18:06
+ * @LastEditTime: 2023-06-13 00:25:47
  * @Description : 
 -->
 <script setup lang="ts">
@@ -16,7 +16,6 @@ const count = ref(100)
 
 <template>
   <div class="card">
-    <h2>HelloWorld--</h2>
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit

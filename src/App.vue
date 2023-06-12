@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-11 23:54:36
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-12 23:32:15
+ * @LastEditTime: 2023-06-12 23:39:41
  * @Description : 
 -->
 <script setup lang="ts">
@@ -11,7 +11,7 @@ import { ref } from 'vue'
 
 defineProps<{ msg: string }>()
 
-const count = ref(10)
+const count = ref(100)
 </script>
 
 <template>

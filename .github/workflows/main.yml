@@ -22,11 +22,17 @@ jobs:
         run: |
           echo Add other actions to build.
           echo test, and deploy your project.
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
-      - name: Install dependencies
-        run: npm i
-      - name: Build
-        run: npm run build
+        with:
+          cache: 'pnpm'
+      - name: 安装 node 依赖
+        run: pnpm install --frozen-lockfile
+      - name: 构建
+        run: pnpm build
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:

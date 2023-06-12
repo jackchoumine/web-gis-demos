@@ -15,24 +15,31 @@ jobs:
     steps: # job 执行步骤
       # 使用现成的 actions
       - uses: actions/checkout@v1 # github 的 actions  拉取代码
+
       - name: first step # 给这个步骤取一个名字
         # 不取名字 - run echo Hello,World!
         run: echo Hello,world!
+
       - name: 测试一个脚本
         run: |
           echo Add other actions to build.
           echo test, and deploy your project.
-      # - name: 安装pnpm
-      #   uses: pnpm/action-setup@v2
-      #   with:
-      #     version: 8
+
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - uses: actions/setup-node@v3 # 设置node环境 TODO @v3 表示什么？
-        # with:
-        #   cache: 'pnpm'
+        with:
+          cache: 'pnpm'
+
       - name: 安装 node 依赖
-        run: npm i #  pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
+
       - name: 构建
-        run: npm run build
+        run: pnpm build
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:

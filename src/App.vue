@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-11 23:54:36
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-13 00:25:47
+ * @LastEditTime: 2023-06-13 00:27:48
  * @Description : 
 -->
 <script setup lang="ts">
@@ -17,10 +17,6 @@ const count = ref(100)
 <template>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
   </div>
 </template>
 
